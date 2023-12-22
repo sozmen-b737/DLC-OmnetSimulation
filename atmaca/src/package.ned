@@ -1,0 +1,3 @@
+package atmaca;
+
+@license(LGPL);

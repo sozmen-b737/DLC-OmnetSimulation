@@ -1,0 +1,39 @@
+<config>
+	<interface hosts="*saw*" address="10.1.1.x" netmask="255.255.255.x"/>
+	<interface hosts="*esb*" address="10.2.1.x" netmask="255.255.255.x"/>
+	
+	<interface hosts="istAreaRouter" names="eth0" address="10.1.3.x" netmask="255.255.255.x" />
+	<interface hosts="istAreaRouter" names="eth*" address="10.1.2.x" netmask="255.255.255.x" />
+	
+	<interface hosts="ankAreaRouter" names="eth0" address="10.2.3.x" netmask="255.255.255.x" />
+	<interface hosts="ankAreaRouter" names="eth*" address="10.2.2.x" netmask="255.255.255.x" />
+	
+	<interface hosts="istAreaRouter" towards="EuropeBackboneRouter" address="10.1.3.x" netmask="255.255.255.x"/>
+	<interface hosts="ankAreaRouter" towards="EuropeBackboneRouter" address="10.2.3.x" netmask="255.255.255.x"/>
+	
+	<interface hosts="istAreaAgent" towards="istAreaRouter" address="10.1.2.x" netmask="255.255.255.x"/>
+	<interface hosts="ankAreaAgent" towards="ankAreaRouter" address="10.2.2.x" netmask="255.255.255.x"/>
+	
+	<interface hosts="*SawRouter" names="eth0" address="10.1.2.x" netmask="255.255.255.x"/>
+	<interface hosts="*SawRouter" names="eth1" address="10.1.1.x" netmask="255.255.255.x"/>
+	<interface hosts="*SawRouter" names="eth2" address="192.168.1.1" netmask="255.255.255.x"/>
+
+	<interface hosts="*EsbRouter" names="eth0" address="10.2.2.x" netmask="255.255.255.x"/>
+	<interface hosts="*EsbRouter" names="eth1" address="10.2.1.x" netmask="255.255.255.x"/>
+	<interface hosts="*EsbRouter" names="eth2" address="192.168.2.1" netmask="255.255.255.x"/>
+	
+	<interface hosts="EuropeBackboneRouter" towards="istAreaRouter" address="10.1.3.x" netmask="255.255.255.x"/>
+	<interface hosts="EuropeBackboneRouter" towards="ankAreaRouter" address="10.2.3.x" netmask="255.255.255.x"/>
+
+	<route hosts="*SawRouter" destination="192.168.1.0" netmask="255.255.255.0" interface="eth2" /> 
+	<route hosts="*EsbRouter" destination="192.168.2.0" netmask="255.255.255.0" interface="eth2" />
+	 
+	<route hosts="istAreaRouter" destination="192.168.2.0" netmask="255.255.255.0" gateway="10.1.3.1" interface="eth0" />
+	<route hosts="istAreaRouter" destination="192.168.1.0" netmask="255.255.255.0" gateway="10.1.2.6" interface="eth2" />
+	
+	<route hosts="ankAreaRouter" destination="192.168.1.0" netmask="255.255.255.0" gateway="10.2.3.1" interface="eth0" />
+	<route hosts="ankAreaRouter" destination="192.168.2.0" netmask="255.255.255.0" gateway="10.2.2.6" interface="eth2" />
+	 
+	 
+	 	
+</config>

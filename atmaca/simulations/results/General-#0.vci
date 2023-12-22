@@ -1,0 +1,819 @@
+file 849315 1693221293                                          
+version 3
+run General-0-20230828-14:14:38-10388
+attr configname General
+attr datetime 20230828-14:14:38
+attr datetimef 20230828-141438
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network AirportNetwork
+attr processid 10388
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config description "Aeronautical Communication Network"
+config network AirportNetwork
+config *.configurator.dumpAddresses true
+config *.configurator.dumpTopology true
+config *.configurator.dumpLinks true
+config *.configurator.dumpRoutes true
+config *.*.ipv4.arp.typename GlobalArp
+config *.*.ipv4.routingTable.netmaskRoutes "\"\""
+config **.forwarding true
+config **.mgmt.numChannels 13
+config *.*.wlan[*].bitrate 54Mbps
+config **.analogModel.ignorePartialInterference true
+config **.wlan[*].mac.headerLength 1B
+config **.wlan[*].mgmt.numAuthSteps 4
+config **.wlan[*].agent.activeScan true
+config **.wlan[*].agent.defaultSsid "\"\""
+config **.wlan[*].agent.channelsToScan "\"\""
+config **.wlan[*].agent.probeDelay 0.1s
+config **.wlan[*].agent.minChannelTime 0.15s
+config **.wlan[*].agent.maxChannelTime 0.3s
+config **.wlan[*].agent.authenticationTimeout 5s
+config **.wlan[*].agent.associationTimeout 5s
+config **.wlan[*].mac.dcf.channelAccess.cwMin 7
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 100000m
+config **.constraintAreaMaxY 100000m
+config **.constraintAreaMaxZ 0m
+config *.visualizer.routingTableVisualizer.displayRoutingTables true
+config *.visualizer.routingTableVisualizer.destinationFilter "\"*\""
+config *.visualizer.routingTableVisualizer.lineShift 0
+config *.visualizer.routingTableVisualizer.labelFormat "\"\""
+config **.visualizer.ieee80211Visualizer.displayAssociations true
+config **.visualizer.mediumVisualizer.nodeFilter "\"\""
+config **.visualizer.mediumVisualizer.packetFilter "\"*\""
+config **.visualizer.mediumVisualizer.displaySignals true
+config **.visualizer.mediumVisualizer.displaySignalArrivals false
+config **.visualizer.mediumVisualizer.displaySignalDepartures false
+config **.visualizer.mediumVisualizer.displayReceptions true
+config **.visualizer.mediumVisualizer.displayTransmissions true
+config **.visualizer.mediumVisualizer.displayCommunicationRanges true
+config **.visualizer.mediumVisualizer.displayInterferenceRanges true
+config **.visualizer.physicalLinkVisualizer.displayLinks true
+config **.visualizer.physicalLinkVisualizer.packetFilter "\"*\""
+config **.visualizer.networkRouteVisualizer.displayRoutes false
+config **.visualizer.networkRouteVisualizer.packetFilter "\"*\""
+config **.visualizer.networkRouteVisualizer.fadeOutMode "\"simulationTime\""
+config **.visualizer.networkRouteVisualizer.fadeOutTime 5s
+config **.visualizer.pathVisualizer.displayRoutes true
+config **.visualizer.pathVisualizer.fadeOutTime 3s
+config **.visualizer.dataLinkVisualizer.displayLinks true
+config **.visualizer.dataLinkVisualizer.fadeOutMode "\"simulationTime\""
+config **.visualizer.dataLinkVisualizer.fadeOutTime 1.4s
+config **.visualizer.dataLinkVisualizer.packetFilter "\"*\""
+config **.visualizer.dataLinkVisualizer.nodeFilter "\"*\""
+config **.visualizer.interfaceTableVisualizer.displayInterfaceTables false
+config **.visualizer.interfaceTableVisualizer.nodeFilter "\"*\""
+config **.visualizer.interfaceTableVisualizer.interfaceFilter "\"not lo* and not ipv4Address =~ '<unspec>'\""
+config **.visualizer.mobilityVisualizer.animationSpeed 1
+config **.visualizer.mobilityVisualizer.displayMovementTrails true
+config **.visualizer.mobilityVisualizer.trailLength 50
+config **.visualizer.mobilityVisualizer.displayVelocities true
+config **.visualizer.mobilityVisualizer.displayOrientations true
+config **.visualizer.transportConnectionVisualizer.displayTransportConnections true
+config **.visualizer.transportConnectionVisualizer.destinationPortFilter "\"1000\""
+config **.visualizer.transportConnectionVisualizer.placementHint "\"topCenter\""
+config **.visualizer.transportRouteVisualizer.displayRoutes true
+config **.visualizer.transportRouteVisualizer.fadeOutMode "\"simulationTime\""
+config **.visualizer.transportRouteVisualizer.fadeOutTime 1.2s
+config **.visualizer.transportRouteVisualizer.packetFilter "\"*\""
+config **.visualizer.transportRouteVisualizer.nodeFilter "\"*\""
+config **.visualizer.packetDropVisualizer.displayPacketDrops false
+config **.visualizer.packetDropVisualizer.labelFormat "\"name:%n /reason: %r/class:%c\""
+config **.visualizer.packetDropVisualizer.fadeOutTime 3s
+config **.visualizer.*.statisticVisualizer.signalName "\"packetSentToUpper\""
+config **.visualizer.*.statisticVisualizer.statisticExpression "\"packetErrorRate\""
+config **.visualizer.*.statisticVisualizer.sourceFilter "\"*.destination.wlan[*].radio\""
+config **.visualizer.*.statisticVisualizer.format "\"packetErrorRate: %v\""
+
+vector 0 AirportNetwork.istAreaAgent.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 1 AirportNetwork.istAreaAgent.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 2 AirportNetwork.istAreaAgent.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 3 AirportNetwork.ankAreaAgent.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 4 AirportNetwork.ankAreaAgent.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 5 AirportNetwork.ankAreaAgent.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 6 AirportNetwork.atmSawAP.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 7 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 8 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 9 AirportNetwork.atmEsbAP.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 10 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 11 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 12 AirportNetwork.sawDelivery.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 13 AirportNetwork.sawDelivery.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 14 AirportNetwork.sawDelivery.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 15 AirportNetwork.sawGround.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 16 AirportNetwork.sawGround.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 17 AirportNetwork.sawGround.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 18 AirportNetwork.sawTower.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 19 AirportNetwork.sawTower.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 20 AirportNetwork.sawTower.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 21 AirportNetwork.esbTower.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 22 AirportNetwork.esbTower.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 23 AirportNetwork.esbTower.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 24 AirportNetwork.esbGround.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 25 AirportNetwork.esbGround.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 26 AirportNetwork.esbGround.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 27 AirportNetwork.esbDelivery.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 28 AirportNetwork.esbDelivery.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 29 AirportNetwork.esbDelivery.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 30 AirportNetwork.thyFlight.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 31 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 32 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 33 AirportNetwork.thyFlight.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 34 AirportNetwork.thyFlight.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 35 AirportNetwork.thyFlight.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 36 AirportNetwork.atmSawAP.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 37 AirportNetwork.atmSawAP.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 38 AirportNetwork.atmEsbAP.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 39 AirportNetwork.atmEsbAP.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 40 AirportNetwork.thyFlight.wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 41 AirportNetwork.thyFlight.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 42 AirportNetwork.atmSawAP.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 43 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 44 AirportNetwork.atmEsbAP.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 45 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 46 AirportNetwork.thyFlight.wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 47 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 48 AirportNetwork.atmSawAP.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 49 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 50 AirportNetwork.thyFlight.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 51 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 52 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 53 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 54 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 55 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 56 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 57 AirportNetwork.atmEsbAP.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 58 AirportNetwork.atmEsbAP.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 59 AirportNetwork.atmEsbAP.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 60 AirportNetwork.atmEsbAP.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 61 AirportNetwork.atmEsbAP.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 62 AirportNetwork.atmEsbAP.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 63 AirportNetwork.atmEsbAP.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 64 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 65 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 66 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 67 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 68 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 69 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 70 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 71 AirportNetwork.atmSawAP.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 72 AirportNetwork.atmSawAP.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 73 AirportNetwork.atmSawAP.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 74 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 75 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 76 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 77 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 78 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 79 AirportNetwork.thyFlight.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 80 AirportNetwork.thyFlight.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 81 AirportNetwork.thyFlight.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 82 AirportNetwork.thyFlight.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 83 AirportNetwork.thyFlight.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 84 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 85 AirportNetwork.atmEsbAP.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 86 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 87 AirportNetwork.atmSawAP.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 88 AirportNetwork.thyFlight.wlan[0].agent sentRequest:vector ETV
+attr recordingmode vector
+attr title "sent requests"
+vector 89 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 90 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 91 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 92 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 93 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 94 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 95 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 96 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 97 AirportNetwork.thyFlight.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 98 AirportNetwork.thyFlight.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 99 AirportNetwork.thyFlight.wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 100 AirportNetwork.thyFlight.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 101 AirportNetwork.thyFlight.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 102 AirportNetwork.thyFlight.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 103 AirportNetwork.thyFlight.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 104 AirportNetwork.thyFlight.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 105 AirportNetwork.atmSawAP.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 106 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 107 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 108 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 109 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 110 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 111 AirportNetwork.atmSawAP.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 112 AirportNetwork.thyFlight.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 113 AirportNetwork.thyFlight.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 114 AirportNetwork.atmSawAP.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 115 AirportNetwork.thyFlight.wlan[0].agent acceptConfirm:vector ETV
+attr recordingmode vector
+attr title "accepted confirms"
+vector 116 AirportNetwork.thyFlight.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+0	33349 8 0 0 0 0 1 0 0 0 0
+1	33357 8 0 0 0 0 1 0 0 0 0
+2	33365 8 0 0 0 0 1 0 0 0 0
+3	33373 8 0 0 0 0 1 0 0 0 0
+4	33381 8 0 0 0 0 1 0 0 0 0
+5	33389 8 0 0 0 0 1 0 0 0 0
+6	33397 17294 0 10054 0 34.664635411509 704 0 1 351 351
+7	50691 17294 0 10054 0 34.664635411509 704 0 1 351 351
+8	67985 17438 0 10048 0 34.664589411509 710 0 1 354 354
+9	85423 17154 0 10069 0 34.738484170822 698 0 1 348 348
+10	102577 17852 0 10069 0 34.738484170822 698 0 1 348 348
+11	120429 17852 0 10063 0 34.738438170822 698 0 1 348 348
+12	138281 9 0 0 0 0 1 0 0 0 0
+13	138290 9 0 0 0 0 1 0 0 0 0
+14	138299 9 0 0 0 0 1 0 0 0 0
+15	138308 9 0 0 0 0 1 0 0 0 0
+16	138317 9 0 0 0 0 1 0 0 0 0
+17	138326 9 0 0 0 0 1 0 0 0 0
+18	138335 9 0 0 0 0 1 0 0 0 0
+19	138344 9 0 0 0 0 1 0 0 0 0
+20	138353 9 0 0 0 0 1 0 0 0 0
+21	138362 9 0 0 0 0 1 0 0 0 0
+22	138371 9 0 0 0 0 1 0 0 0 0
+23	138380 9 0 0 0 0 1 0 0 0 0
+24	138389 9 0 0 0 0 1 0 0 0 0
+25	138398 9 0 0 0 0 1 0 0 0 0
+26	138407 9 0 0 0 0 1 0 0 0 0
+27	138416 9 0 0 0 0 1 0 0 0 0
+28	138425 9 0 0 0 0 1 0 0 0 0
+29	138434 9 0 0 0 0 1 0 0 0 0
+30	138443 794 0 1315 0 3.587920564747 34 0 1 16 16
+31	139237 794 0 1315 0 3.587920564747 34 0 1 16 16
+32	140031 894 0 1293 0 3.587834079471 38 0 1 18 18
+33	140925 9 0 0 0 0 1 0 0 0 0
+34	140934 9 0 0 0 0 1 0 0 0 0
+35	140943 9 0 0 0 0 1 0 0 0 0
+36	140952 18157 0 10055 0 34.664635411509 711 0 3 1772 4606
+37	159109 9 0 0 0 0 1 0 0 0 0
+38	159118 17862 0 10070 0 34.738484170822 699 0 3 1742 4528
+39	176980 9 0 0 0 0 1 0 0 0 0
+40	176989 1001 0 1337 0 3.588116564747 43 0 3 102 264
+41	177990 375 0 1280 0 3.587660079471 16 0 12 78 650
+42	178365 18533 0 10055 0 34.664635411509 725 0 3 387 435
+43	196898 72630 0 10055 0 34.664635411509 2838 0 2 1422 2838
+44	269528 17844 0 10070 0 34.738484170822 697 0 1 349 349
+45	287372 71356 0 10070 0 34.738484170822 2786 0 2 1392 2784
+46	358728 17662 0 10056 0 34.664635654147 689 0 3 1317 3261
+47	376390 36576 0 10056 0 34.664635654147 1430 0 2 76 148
+48	412966 9 0 0 0 0 1 7 7 7 49
+49	412975 9 0 0 0 0 1 7 7 7 49
+50	412984 9 0 0 0 0 1 7 7 7 49
+51	412993 9613 2 10062 0.038438170822 34.738438170822 348 384 384 133632 51314688
+52	422606 17834 2 10064 0.038438170822 34.738438170822 696 0 1 348 348
+53	440440 18530 2 10064 0.038438170822 34.738438170822 696 0 384 133632 51314688
+54	458970 8917 2 10062 0.038438170822 34.738438170822 348 0 7 1123 5351
+55	467887 8917 4 10064 0.038438170822 34.738438170822 348 0 0 0 0
+56	476804 9613 4 10064 0.038438170822 34.738438170822 348 384 384 133632 51314688
+57	486417 11353 4 10064 0.038438170822 34.738438170822 348 24000000 24000000 8352000000 2.00448e+17
+58	497770 9265 4 10064 0.038438170822 34.738438170822 348 48 48 16704 801792
+59	507035 35669 5 10070 0.038438170822 34.738484170822 1392 0 2 1392 2088
+60	542704 9265 9 10069 0.038484170822 34.738484170822 348 48 48 16704 801792
+61	551969 9265 9 10069 0.038484170822 34.738484170822 348 48 48 16704 801792
+62	561234 9265 9 10069 0.038484170822 34.738484170822 348 48 48 16704 801792
+63	570499 9265 9 10069 0.038484170822 34.738484170822 348 48 48 16704 801792
+64	579764 11005 9 10069 0.038484170822 34.738484170822 348 4.6e-05 4.6e-05 0.016008 7.36368e-07
+65	590769 9692 15 10047 0.064589411509 34.664589411509 351 272 384 134464 51545600
+66	600461 17980 15 10049 0.064589411509 34.664589411509 702 0 1 351 351
+67	618441 18682 15 10049 0.064589411509 34.664589411509 702 0 384 134464 51545600
+68	637123 8990 15 10047 0.064589411509 34.664589411509 351 0 7 1215 6063
+69	646113 9015 17 10049 0.064589411509 34.664589411509 351 0 0.000174 0.000532 7.6848e-08
+70	655128 9692 17 10049 0.064589411509 34.664589411509 351 272 384 134464 51545600
+71	664820 11543 17 10049 0.064589411509 34.664589411509 354 24000000 24000000 8496000000 2.03904e+17
+72	676363 9419 17 10049 0.064589411509 34.664589411509 354 14 48 16850 805988
+73	685782 36260 18 10055 0.064589411509 34.664635411509 1416 0 2 1416 2124
+74	722042 9419 22 10054 0.064635411509 34.664635411509 354 14 48 16850 805988
+75	731461 9238 22 10054 0.064635411509 34.664635411509 347 48 48 16656 799488
+76	740699 9238 22 10054 0.064635411509 34.664635411509 347 48 48 16656 799488
+77	749937 9419 22 10054 0.064635411509 34.664635411509 354 14 48 16850 805988
+78	759356 11120 22 10054 0.064635411509 34.664635411509 351 4.6e-05 9.0485276e-05 0.016311941104 7.6487869406718e-07
+79	770476 8664 25 10057 0.064635654147 34.664635654147 324 14 48 15410 736868
+80	779140 8664 25 10057 0.064635654147 34.664635654147 324 14 48 15410 736868
+81	787804 8483 25 10057 0.064635654147 34.664635654147 317 48 48 15216 730368
+82	796287 8483 25 10057 0.064635654147 34.664635654147 317 48 48 15216 730368
+83	804770 8664 25 10057 0.064635654147 34.664635654147 324 14 48 15410 736868
+84	813434 6051 30 10062 0.1 34.7 347 3840 3840 1332480 5116723200
+85	819485 6051 32 10064 0.1 34.7 347 3840 3840 1332480 5116723200
+86	825536 6033 43 10047 0.1 34.6 346 3840 12160 1340800 5279334400
+87	831569 6033 45 10049 0.1 34.6 346 3840 12160 1340800 5279334400
+88	837602 73 57 1276 0.187069108919 3.587660079471 3 1 4 7 21
+89	837675 420 90 1279 0.287069108919 3.587660079471 16 256 288 4160 1082880
+90	838095 492 90 1191 0.1 3.5 35 0 2560 33280 85196800
+91	838587 776 90 1294 0.287069108919 3.587834079471 32 0 1 16 16
+92	839363 808 90 1294 0.287069108919 3.587834079471 32 0 288 4160 1082880
+93	840171 388 90 1279 0.287069108919 3.587660079471 16 0 7 57 281
+94	840559 402 92 1294 0.287069108919 3.587834079471 16 0 0.000174 0.000288 4.3272e-08
+95	840961 420 92 1294 0.287069108919 3.587834079471 16 256 288 4160 1082880
+96	841381 492 92 1194 0.1 3.5 35 0 2560 33280 85196800
+97	841873 627 92 1326 0.287069108919 3.588072564747 20 24000000 24000000 480000000 1.152e+16
+98	842500 507 92 1329 0.287069108919 3.588082564747 20 14 36 576 17704
+99	843007 1948 93 1337 0.287069108919 3.588116564747 80 0 2 80 120
+100	844955 527 97 1336 0.287107108919 3.588116564747 20 14 36 576 17704
+101	845482 339 97 1130 0.287107108919 3.437107108919 13 32 32 416 13312
+102	845821 339 97 1130 0.287107108919 3.437107108919 13 32 32 416 13312
+103	846160 527 97 1336 0.287107108919 3.588116564747 20 14 36 576 17704
+104	846687 518 97 1315 0.287107108919 3.587920564747 16 3.8e-05 8.6485276e-05 0.000753455828 4.1211108894389e-08
+105	847205 214 100 1339 0.287107351557 3.588116807385 8 14 36 192 5416
+106	847419 214 100 1339 0.287107351557 3.588116807385 8 14 36 192 5416
+107	847633 26 100 100 0.287107351557 0.287107351557 1 32 32 32 1024
+108	847659 26 100 100 0.287107351557 0.287107351557 1 32 32 32 1024
+109	847685 214 100 1339 0.287107351557 3.588116807385 8 14 36 192 5416
+110	847899 188 110 1323 0.287223351557 3.588072322109 7 14 48 194 6500
+111	848087 333 110 1335 0.287223351557 3.588116322109 12 0 4.4e-05 0.000176 7.744e-09
+112	848420 188 113 1326 0.287223594195 3.588072564747 7 14 48 194 6500
+113	848608 188 122 1336 0.287267594195 3.588116564747 7 14 36 160 4392
+114	848796 188 125 1339 0.287267836833 3.588116807385 7 14 36 160 4392
+115	848984 78 1188 1328 3.587069108919 3.588072564747 3 1 4 7 21
+116	849062 252 1199 1311 3.587111108919 3.587920079471 9 0 4.4e-05 0.000132 5.808e-09
+
